@@ -291,3 +291,45 @@ h1 {
   .fact dt { color: var(--slate); }
   .pitch { break-inside: avoid; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
+
+/* Match clock, theme toggle */
+.masthead { position: sticky; }
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--kit); transform: scaleX(0); transform-origin: left; }
+.clock { min-width: 3.2ch; text-align: right; font-weight: 800; font-stretch: 62%; font-size: 1.125rem; font-variant-numeric: tabular-nums; color: var(--kit); }
+.mode {
+  min-height: 44px; padding: 0 var(--s3); border: 1px solid var(--ink); border-radius: 2px; background: transparent; color: var(--ink);
+  font: 600 .875rem/1 var(--font); cursor: pointer; white-space: nowrap; transition: background-color .12s, color .12s;
+}
+.mode:hover { background: var(--ink); color: var(--paper); }
+@media (max-width: 759px) { .clock { display: none; } }
+
+/* Game plan: a true sequence, so it is numbered */
+.plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: var(--s6) var(--s5); counter-reset: step; }
+.plan li { counter-increment: step; border-top: 2px solid var(--ink); padding-top: var(--s3); }
+.plan li::before {
+  content: counter(step); display: block; font-weight: 800; font-stretch: 62%; font-size: 3.5rem; line-height: 1; color: var(--kit);
+  font-variant-numeric: tabular-nums; margin-bottom: var(--s2);
+}
+.plan h3 { font-size: 1.375rem; font-weight: 700; font-stretch: 85%; line-height: 1.2; }
+.plan p { margin-top: var(--s2); color: var(--slate); }
+
+/* Night match: deep green, not black */
+:root[data-theme="dark"] {
+  --paper: #0C2016; --ink: #EEF3EC; --slate: #A8B8AD; --rule: #264234; --kit: #FF5A70;
+}
+:root[data-theme="dark"] .brand-mark { background: var(--ink); color: #0C2016; }
+:root[data-theme="dark"] .skip { background: var(--ink); color: #0C2016; }
+:root[data-theme="dark"] .btn-primary { color: #0E1A14; }
+:root[data-theme="dark"] .btn-send { background: #D81E3A; color: #fff; }
+:root[data-theme="dark"] .btn-send:hover { background: #B91833; }
+:root[data-theme="dark"] .form input, :root[data-theme="dark"] .form textarea { background: #12301f; color: var(--ink); }
+:root[data-theme="dark"] .dot-num { color: #0E1A14; }
+:root[data-theme="dark"] .dot.is-on .dot-num { background: #0E1A14; color: #F7F9F5; }
+:root[data-theme="dark"] .hero-band { --hr: rgba(247, 249, 245, .28); }
+:root[data-theme="dark"] .mail:hover, :root[data-theme="dark"] .socials a:hover { text-decoration-color: var(--ink); }
+:root[data-theme="dark"] .portrait { background: #12301f; }
+:root[data-theme="dark"] .report-media { background: #12301f; }
+:root[data-theme="dark"] .report-title a, :root[data-theme="dark"] .news h3 a { text-decoration-color: var(--rule); }
+:root[data-theme="dark"] .report-title a:hover, :root[data-theme="dark"] .news h3 a:hover { text-decoration-color: var(--kit); }
+:root[data-theme="dark"] .btn-text:hover { text-decoration-color: currentColor; }
+:root[data-theme="dark"] .pitch :focus-visible, :root[data-theme="dark"] .hero-band :focus-visible { outline-color: #F7F9F5; }

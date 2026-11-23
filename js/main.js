@@ -271,6 +271,58 @@
     });
   }
 
+  function renderPlan(raw) {
+    var list = arr(raw).filter(function (x) { return x && str(x.title); });
+    if (!list.length) { hideSection('process'); return; }
+    list.forEach(function (x) {
+      var li = el('li'); li.appendChild(el('h3', null, str(x.title)));
+      if (str(x.description)) li.appendChild(el('p', null, str(x.description)));
+      $('plan-list').appendChild(li);
+    });
+  }
+
+  // Local time at the player's base, so visitors know when a reply is likely.
+  function startLocalTime(tz) {
+    var box = $('fact-time');
+    if (!tz) { box.hidden = true; return; }
+    function tick() {
+      try {
+        var parts = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz, timeZoneName: 'short' }).formatToParts(new Date());
+        var get = function (t) { var p = parts.filter(function (x) { return x.type === t; })[0]; return p ? p.value : ''; };
+        $('localtime').textContent = get('hour') + ':' + get('minute') + ' ' + get('timeZoneName');
+      } catch (e) { box.hidden = true; clearInterval(timer); }
+    }
+    var timer = setInterval(tick, 30000); tick();
+  }
+
+  // Match clock: scroll progress shown as minutes played.
+  function startClock() {
+    var bar = $('progress'), clock = $('clock'), queued = false;
+    function update() {
+      queued = false;
+      var max = document.documentElement.scrollHeight - innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+      bar.style.transform = 'scaleX(' + p + ')';
+      clock.textContent = p >= .995 ? 'FT' : Math.round(p * 90) + '\u2032';
+    }
+    addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update); update();
+  }
+
+  function startTheme() {
+    var btn = $('mode'), root = document.documentElement;
+    function sync() {
+      var dark = root.dataset.theme === 'dark';
+      btn.setAttribute('aria-pressed', dark); btn.textContent = dark ? 'Day match' : 'Night match';
+    }
+    btn.addEventListener('click', function () {
+      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+      sync();
+    });
+    sync();
+  }
+
   function watchNav() {
     if (!('IntersectionObserver' in window)) return;
     var links = {};
@@ -297,15 +349,21 @@
     renderServices(d.services);
     renderSkills(d.skills);
     renderProjects(d.projects);
+    renderPlan(d.process);
     renderExperience(d.experience);
     renderQuotes(d.testimonials);
     renderNews(d.news);
     renderContact(d);
     bindForm(str(d.email));
+    var cv = safeUrl(d.cv);
+    if (cv) { $('cv').href = cv; $('cv').hidden = false; }
+    startLocalTime(str(d.timezone));
     if ($('work').hidden) $('cta-work').hidden = true;
     $('copy').textContent = '© ' + new Date().getFullYear() + (str(d.name) ? ' ' + str(d.name) : '');
     watchNav();
   }
+
+  startTheme(); startClock();
 
   fetch('content/site.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })

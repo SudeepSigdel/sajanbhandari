@@ -20,4 +20,4 @@ python -m http.server
 
 ## Optional sections
 
-`content/site.json` also supports `number` (shirt number on the hero), `services`, `testimonials` and `news`. Any section with no entries is hidden automatically. Only add testimonials from real people who agreed to be quoted.
+`content/site.json` also supports `number` (shirt number on the hero), `services`, `process`, `testimonials`, `news`, `cv` (link) and `timezone` (for the local-time clock). Any section with no entries is hidden automatically. Only add testimonials from real people who agreed to be quoted.

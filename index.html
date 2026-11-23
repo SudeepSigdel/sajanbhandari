@@ -9,13 +9,19 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Sajan Bhandari, programmer in Nepal">
   <meta property="og:description" content="Portfolio of Sajan Bhandari, a programmer building things for the web.">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://sajanbhandari.com.np/">
+  <meta property="og:image" content="https://sajanbhandari.com.np/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sajanbhandari.com.np/assets/og.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sajan Bhandari","jobTitle":"Programmer","url":"https://sajanbhandari.com.np","homeLocation":{"@type":"Place","name":"Nepal"}}</script>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>try{var t=localStorage.getItem('theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -31,7 +37,10 @@
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
       </nav>
+      <span class="clock" id="clock" aria-hidden="true">0&prime;</span>
+      <button class="mode" id="mode" type="button" aria-pressed="false">Night match</button>
     </div>
+    <div class="progress" id="progress" aria-hidden="true"></div>
   </header>
 
   <main id="main">
@@ -62,6 +71,7 @@
         <dl class="facts" id="facts">
           <div class="fact" id="fact-role"><dt>Position</dt><dd id="role"></dd></div>
           <div class="fact" id="fact-location"><dt>Based in</dt><dd id="location"></dd></div>
+          <div class="fact" id="fact-time"><dt>Local time</dt><dd id="localtime"></dd></div>
           <div class="fact" id="fact-availability"><dt>Availability</dt><dd id="availability"></dd></div>
         </dl>
       </div>
@@ -136,6 +146,13 @@
       </div>
     </section>
 
+    <section id="process" class="section">
+      <div class="wrap section-grid">
+        <h2 class="section-title">Game plan</h2>
+        <ol class="plan section-body" id="plan-list"></ol>
+      </div>
+    </section>
+
     <section id="experience" class="section">
       <div class="wrap section-grid">
         <h2 class="section-title">Career record</h2>
@@ -169,6 +186,7 @@
         <div class="section-body">
           <p id="mail-intro">Email is the quickest way to reach me.</p>
           <a class="mail" id="mail" href="#"></a>
+          <p><a class="btn-text" id="cv" href="#" hidden>Download CV</a></p>
           <form class="form" id="form" novalidate>
             <p class="small">Or write it here. This opens your email app with the message ready to send.</p>
             <label>Your name<input id="f-name" name="name" autocomplete="name" required></label>

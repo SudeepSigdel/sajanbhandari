@@ -8,8 +8,10 @@
   "tagline": "I build fast, dependable software for the web.",
   "availability": "Open to new projects",
   "location": "Nepal",
+  "timezone": "Asia/Kathmandu",
   "number": "10",
   "email": "hello@sajanbhandari.com.np",
+  "cv": "",
   "avatar": "",
   "socials": [
     {
@@ -78,6 +80,24 @@
       ],
       "url": "https://github.com/sajanbhandari",
       "image": ""
+    }
+  ],
+  "process": [
+    {
+      "title": "Brief",
+      "description": "Placeholder: how you learn what the project needs."
+    },
+    {
+      "title": "Build",
+      "description": "Placeholder: how you design and develop it, with regular check-ins."
+    },
+    {
+      "title": "Review",
+      "description": "Placeholder: testing and feedback before anything goes live."
+    },
+    {
+      "title": "Ship",
+      "description": "Placeholder: launch, hand-over and ongoing support."
     }
   ],
   "experience": [
