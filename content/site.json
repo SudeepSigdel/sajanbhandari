@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Sajan Bhandari — Programmer",
+    "title": "Sajan Bhandari, programmer in Nepal",
     "description": "Portfolio of Sajan Bhandari, a programmer building things for the web."
   },
   "name": "Sajan Bhandari",
@@ -11,26 +11,56 @@
   "email": "hello@sajanbhandari.com.np",
   "avatar": "",
   "socials": [
-    { "label": "Instagram", "url": "https://instagram.com/sajan_bhandari_" },
-    { "label": "Facebook", "url": "https://facebook.com/sajan.dwxs" }
+    {
+      "label": "Instagram",
+      "url": "https://instagram.com/sajan_bhandari_"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://facebook.com/sajan.dwxs"
+    }
   ],
   "about": {
-    "heading": "Every hero has an origin. Mine is a keyboard.",
+    "heading": "Programmer based in Nepal, building for the web.",
     "paragraphs": [
       "I'm Sajan, a programmer based in Nepal. I enjoy turning ideas into working products, from the first line of code to the last pixel.",
-      "Placeholder text: replace this with your own story from the admin panel at /admin."
+      "Placeholder: say what you are working on now, the problems you like solving, and how to work with you. Edit this at /admin."
     ]
   },
   "skills": [
-    { "group": "Frontend", "items": ["HTML", "CSS", "JavaScript"] },
-    { "group": "Backend", "items": ["Node.js", "APIs", "Databases"] },
-    { "group": "Tools", "items": ["Git", "GitHub", "Linux"] }
+    {
+      "group": "Frontend",
+      "items": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    {
+      "group": "Backend",
+      "items": [
+        "Node.js",
+        "APIs",
+        "Databases"
+      ]
+    },
+    {
+      "group": "Tools",
+      "items": [
+        "Git",
+        "GitHub",
+        "Linux"
+      ]
+    }
   ],
   "projects": [
     {
-      "title": "Your first project",
-      "description": "A short description of what it does and what you built. Replace this from the admin panel.",
-      "tags": ["JavaScript", "Web"],
+      "title": "Project title (placeholder)",
+      "description": "One or two sentences on what it does and what you built. Replace this at /admin.",
+      "tags": [
+        "JavaScript",
+        "Web"
+      ],
       "url": "https://github.com/sajanbhandari",
       "image": ""
     }
@@ -39,7 +69,7 @@
     {
       "role": "Programmer",
       "org": "Independent",
-      "period": "2023 — Present",
+      "period": "2023–present",
       "summary": "Building websites and software for clients and personal projects."
     }
   ]

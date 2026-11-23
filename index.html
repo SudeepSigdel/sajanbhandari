@@ -3,108 +3,144 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sajan Bhandari — Programmer</title>
+  <title>Sajan Bhandari, programmer in Nepal</title>
   <meta name="description" content="Portfolio of Sajan Bhandari, a programmer building things for the web.">
-  <meta name="theme-color" content="#2a4bd7">
-  <link rel="icon" href="assets/favicon.ico">
+  <meta name="theme-color" content="#F2F4EF">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="emblem" viewBox="0 0 100 112">
-      <path d="M50 4 94 18v36c0 28-20 44-44 54C26 98 6 82 6 54V18Z" fill="#e0262d" stroke="#0f1530" stroke-width="6" stroke-linejoin="round"/>
-      <path d="M50 14 84 25v29c0 21-15 35-34 43C31 89 16 75 16 54V25Z" fill="none" stroke="#fffef9" stroke-width="3"/>
-      <path d="M57 22 31 60h16l-6 28 28-40H54Z" fill="#ffd21f" stroke="#0f1530" stroke-width="5" stroke-linejoin="round"/>
-    </symbol>
-  </svg>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="bar">
-    <a class="brand" href="#top" aria-label="Back to the top">
-      <svg class="mark" viewBox="0 0 100 112"><use href="#emblem"/></svg>
-      <span id="brand">SB</span>
-    </a>
-    <nav aria-label="Primary">
-      <a href="#about">Origin</a>
-      <a href="#powers">Powers</a>
-      <a href="#work">Missions</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark" id="brand">SB</span><span class="brand-name" id="brand-name"></span></a>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="cover" id="top">
-      <div class="cover-text">
-        <p class="issue">Issue #1</p>
+  <main id="main">
+    <section class="hero hero--solo wrap" id="top">
+      <div class="hero-main">
         <h1 id="name"></h1>
-        <p class="codename" id="role"></p>
-        <div class="bubble"><p id="tagline"></p></div>
+        <p class="lead" id="tagline"></p>
         <div class="cta">
-          <a class="btn hot" href="#work">Read the missions</a>
-          <a class="btn" href="#contact">Send the signal</a>
+          <a class="btn btn-primary" id="cta-work" href="#work">See the work</a>
+          <a class="btn-text" href="#contact">Get in touch</a>
         </div>
       </div>
-      <div class="cover-art" aria-hidden="false">
-        <div class="burst"></div>
-        <figure class="portrait" id="avatar" hidden></figure>
-        <svg class="hero-mark" id="hero-mark" viewBox="0 0 100 112" role="img" aria-label="Hero emblem"><use href="#emblem"/></svg>
-        <p class="price" id="availability" hidden></p>
+      <figure class="portrait" id="avatar" hidden></figure>
+      <dl class="facts" id="facts">
+        <div class="fact" id="fact-role"><dt>Position</dt><dd id="role"></dd></div>
+        <div class="fact" id="fact-location"><dt>Based in</dt><dd id="location"></dd></div>
+        <div class="fact" id="fact-availability"><dt>Availability</dt><dd id="availability"></dd></div>
+      </dl>
+    </section>
+
+    <section id="about" class="section">
+      <div class="wrap section-grid">
+        <h2 class="section-title">About</h2>
+        <div class="section-body">
+          <p class="about-lead" id="about-heading"></p>
+          <div class="prose" id="about-body"></div>
+        </div>
       </div>
     </section>
 
-    <div class="wrap">
-      <section id="about" class="sec">
-        <h2 class="banner">Origin story</h2>
-        <div class="origin">
-          <article class="panel main">
-            <p class="caption">It all began with a line of code…</p>
-            <p class="lead" id="about-heading"></p>
-            <div id="about-body"></div>
-          </article>
-          <aside class="panel place">
-            <p class="caption">Last seen</p>
-            <p class="where" id="location"></p>
-          </aside>
+    <section id="skills" class="section teamsheet">
+      <div class="wrap">
+        <header class="teamsheet-head">
+          <div>
+            <h2 class="section-title">Team sheet</h2>
+            <p class="small" id="ts-note">Skills grouped into lines. The first group leads the attack.</p>
+          </div>
+          <p class="formation" id="formation" hidden><span class="small">Formation</span><strong id="formation-figure"></strong></p>
+        </header>
+        <div class="teamsheet-grid">
+          <div class="pitch" id="pitch" aria-hidden="true">
+            <svg class="markings markings--h" viewBox="-2 -2 109 72" preserveAspectRatio="none" focusable="false">
+              <path class="mk" pathLength="1" d="M0 0H105V68H0Z"/>
+              <path class="mk" pathLength="1" d="M52.5 0V68"/>
+              <path class="mk" pathLength="1" d="M52.5 24.85a9.15 9.15 0 1 1 0 18.3a9.15 9.15 0 1 1 0-18.3"/>
+              <path class="mk" pathLength="1" d="M0 13.84H16.5V54.16H0"/>
+              <path class="mk" pathLength="1" d="M105 13.84H88.5V54.16H105"/>
+              <path class="mk" pathLength="1" d="M0 24.84H5.5V43.16H0"/>
+              <path class="mk" pathLength="1" d="M105 24.84H99.5V43.16H105"/>
+              <path class="mk" pathLength="1" d="M16.5 26.69A9.15 9.15 0 0 1 16.5 41.31"/>
+              <path class="mk" pathLength="1" d="M88.5 41.31A9.15 9.15 0 0 1 88.5 26.69"/>
+              <circle class="spot" cx="52.5" cy="34" r=".4"/><circle class="spot" cx="11" cy="34" r=".4"/><circle class="spot" cx="94" cy="34" r=".4"/>
+            </svg>
+            <svg class="markings markings--v" viewBox="-2 -2 72 109" preserveAspectRatio="none" focusable="false">
+              <path class="mk" pathLength="1" d="M0 0H68V105H0Z"/>
+              <path class="mk" pathLength="1" d="M0 52.5H68"/>
+              <path class="mk" pathLength="1" d="M24.85 52.5a9.15 9.15 0 1 0 18.3 0a9.15 9.15 0 1 0-18.3 0"/>
+              <path class="mk" pathLength="1" d="M13.84 0V16.5H54.16V0"/>
+              <path class="mk" pathLength="1" d="M13.84 105V88.5H54.16V105"/>
+              <path class="mk" pathLength="1" d="M24.84 0V5.5H43.16V0"/>
+              <path class="mk" pathLength="1" d="M24.84 105V99.5H43.16V105"/>
+              <path class="mk" pathLength="1" d="M26.69 16.5A9.15 9.15 0 0 0 41.31 16.5"/>
+              <path class="mk" pathLength="1" d="M26.69 88.5A9.15 9.15 0 0 1 41.31 88.5"/>
+              <circle class="spot" cx="34" cy="52.5" r=".4"/><circle class="spot" cx="34" cy="11" r=".4"/><circle class="spot" cx="34" cy="94" r=".4"/>
+            </svg>
+            <div class="formation-lines" id="formation-lines"></div>
+          </div>
+          <div class="squad" id="squad"></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="powers" class="sec">
-        <h2 class="banner">Powers</h2>
-        <div class="powers" id="skills"></div>
-      </section>
+    <section id="work" class="section">
+      <div class="wrap section-grid">
+        <h2 class="section-title">Selected work</h2>
+        <ul class="reports section-body" id="projects"></ul>
+      </div>
+    </section>
 
-      <section id="work" class="sec">
-        <h2 class="banner">Missions</h2>
-        <div class="missions" id="projects"></div>
-      </section>
+    <section id="experience" class="section">
+      <div class="wrap section-grid">
+        <h2 class="section-title">Career record</h2>
+        <div class="section-body table-wrap">
+          <table class="record">
+            <caption class="sr-only">Career record</caption>
+            <thead><tr><th scope="col">Season</th><th scope="col">Role</th><th scope="col">Team</th><th scope="col">Summary</th></tr></thead>
+            <tbody id="experience-list"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
-      <section id="experience" class="sec">
-        <h2 class="banner">Story so far</h2>
-        <ol class="chapters" id="experience-list"></ol>
-      </section>
-
-      <section id="contact" class="sec">
-        <div class="panel signal">
-          <div class="signal-text">
-            <h2 class="signal-title">Need a hero? Send up the signal.</h2>
-            <a class="mail" id="mail" href="#"></a>
+    <section id="contact" class="section">
+      <div class="wrap section-grid">
+        <h2 class="section-title">Get in touch</h2>
+        <div class="section-body">
+          <p id="mail-intro">Email is the quickest way to reach me.</p>
+          <a class="mail" id="mail" href="#"></a>
+          <div id="elsewhere">
+            <p class="small">Elsewhere</p>
             <ul class="socials" id="socials"></ul>
           </div>
-          <div class="beacon" aria-hidden="true"><svg viewBox="0 0 100 112"><use href="#emblem"/></svg></div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="foot">
-    <span class="tbc">To be continued…</span>
-    <span id="copy"></span>
-    <a href="admin/">Admin</a>
+  <footer class="site-foot">
+    <div class="wrap foot-inner">
+      <span id="copy"></span>
+      <a href="admin/">Edit site</a>
+    </div>
   </footer>
 
-  <noscript><p class="noscript">Please enable JavaScript to read this comic.</p></noscript>
+  <noscript><p class="noscript">This page needs JavaScript to load its content.</p></noscript>
   <script src="js/main.js"></script>
 </body>
 </html>
