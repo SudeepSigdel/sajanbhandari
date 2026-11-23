@@ -8,6 +8,7 @@
   "tagline": "I build fast, dependable software for the web.",
   "availability": "Open to new projects",
   "location": "Nepal",
+  "number": "10",
   "email": "hello@sajanbhandari.com.np",
   "avatar": "",
   "socials": [
@@ -27,6 +28,20 @@
       "Placeholder: say what you are working on now, the problems you like solving, and how to work with you. Edit this at /admin."
     ]
   },
+  "services": [
+    {
+      "title": "Websites and web apps",
+      "description": "Placeholder: describe what you build for clients and what they get."
+    },
+    {
+      "title": "Frontend engineering",
+      "description": "Placeholder: interfaces that are fast, accessible and easy to maintain."
+    },
+    {
+      "title": "Backend and APIs",
+      "description": "Placeholder: services, databases and integrations that hold up under load."
+    }
+  ],
   "skills": [
     {
       "group": "Frontend",
@@ -71,6 +86,15 @@
       "org": "Independent",
       "period": "2023–present",
       "summary": "Building websites and software for clients and personal projects."
+    }
+  ],
+  "testimonials": [],
+  "news": [
+    {
+      "date": "2026-11",
+      "title": "Portfolio relaunched",
+      "summary": "A new design, plus a built-in editor so the content can be updated in minutes.",
+      "url": ""
     }
   ]
 }

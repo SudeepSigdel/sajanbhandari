@@ -12,13 +12,18 @@
     { title: 'Site', type: 'object', key: 'meta', fields: [text('title', 'Page title'), area('description', 'Search description')] },
     { title: 'Intro', type: 'group', fields: [
       text('name', 'Name'), text('role', 'Role'), text('tagline', 'Tagline'),
-      text('availability', 'Availability badge (leave empty to hide)'), text('location', 'Location'),
+      text('availability', 'Availability (leave empty to hide)'), text('location', 'Location'),
+      text('number', 'Shirt number (shown on the hero shirt, up to 3 digits)'),
       { key: 'avatar', label: 'Photo', type: 'image' }
     ] },
     { title: 'About', type: 'object', key: 'about', fields: [
       text('heading', 'Headline'),
       { key: 'paragraphs', label: 'Paragraphs', type: 'list', itemType: 'textarea', noun: 'paragraph' }
     ] },
+    { title: 'What I do', type: 'group', fields: [{
+      key: 'services', label: 'Services', type: 'list', itemType: 'object', noun: 'service', titleKey: 'title',
+      fields: [text('title', 'Title'), area('description', 'Description')]
+    }] },
     { title: 'Skills', type: 'group', fields: [{
       key: 'skills', label: 'Skill groups', type: 'list', itemType: 'object', noun: 'group', titleKey: 'group',
       fields: [text('group', 'Group name'), { key: 'items', label: 'Skills', type: 'list', itemType: 'text', noun: 'skill' }]
@@ -32,6 +37,14 @@
     { title: 'Experience', type: 'group', fields: [{
       key: 'experience', label: 'Entries', type: 'list', itemType: 'object', noun: 'entry', titleKey: 'role',
       fields: [text('role', 'Role'), text('org', 'Organisation'), text('period', 'Period'), area('summary', 'Summary')]
+    }] },
+    { title: 'Kind words', type: 'group', fields: [{
+      key: 'testimonials', label: 'Testimonials (only add real ones, with permission)', type: 'list', itemType: 'object', noun: 'testimonial', titleKey: 'name',
+      fields: [area('quote', 'Quote'), text('name', 'Name'), text('role', 'Role or company')]
+    }] },
+    { title: 'Club news', type: 'group', fields: [{
+      key: 'news', label: 'News items (newest first)', type: 'list', itemType: 'object', noun: 'item', titleKey: 'title',
+      fields: [text('date', 'Date (YYYY-MM or YYYY-MM-DD)'), text('title', 'Title'), area('summary', 'Summary'), text('url', 'Link (optional)')]
     }] },
     { title: 'Contact', type: 'group', fields: [
       text('email', 'Email'),

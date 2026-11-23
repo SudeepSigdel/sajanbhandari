@@ -41,18 +41,27 @@
     setFact('availability', str(d.availability));
     if ($('facts').querySelectorAll('.fact:not([hidden])').length === 0) $('facts').hidden = true;
 
-    var src = safeUrl(d.avatar);
-    if (src) {
-      var img = el('img'); img.src = src; img.alt = name; img.width = 800; img.height = 1000;
-      $('avatar').appendChild(img); $('avatar').hidden = false;
-      document.querySelector('.hero').classList.remove('hero--solo');
-    }
+    // Shirt-back graphic: surname and number come from the content file.
+    var parts = name.split(/\s+/).filter(Boolean);
+    var surname = (parts.length > 1 ? parts[parts.length - 1] : name).toUpperCase();
+    var number = str(String(d.number == null ? '' : d.number)).slice(0, 3);
+    var jn = $('jersey-name'), jnum = $('jersey-number');
+    jn.textContent = surname;
+    jn.setAttribute('font-size', Math.max(16, Math.min(34, Math.floor(330 / Math.max(surname.length, 1)))));
+    jnum.textContent = number;
+    jnum.setAttribute('font-size', number.length > 2 ? 140 : 190);
+    if (!name && !number) document.querySelector('.hero-art').hidden = true;
   }
 
-  function renderAbout(a) {
+  function renderAbout(a, avatar, name) {
     a = a || {};
     var heading = str(a.heading), paras = arr(a.paragraphs).map(str).filter(Boolean);
-    if (!heading && !paras.length) { hideSection('about'); return; }
+    var src = safeUrl(avatar);
+    if (src) {
+      var img = el('img'); img.src = src; img.alt = name || ''; img.width = 800; img.height = 1000; img.loading = 'lazy';
+      $('avatar').appendChild(img); $('avatar').hidden = false;
+    } else $('about-grid').classList.add('no-photo');
+    if (!heading && !paras.length && !src) { hideSection('about'); return; }
     $('about-heading').textContent = heading; $('about-heading').hidden = !heading;
     paras.forEach(function (p) { $('about-body').appendChild(el('p', null, p)); });
   }
@@ -198,6 +207,70 @@
     if (!email && !n) hideSection('contact');
   }
 
+  function renderServices(raw) {
+    var list = arr(raw).filter(function (x) { return x && str(x.title); });
+    if (!list.length) { hideSection('services'); return; }
+    list.forEach(function (x) {
+      var li = el('li'); li.appendChild(el('h3', null, str(x.title)));
+      if (str(x.description)) li.appendChild(el('p', null, str(x.description)));
+      $('services-list').appendChild(li);
+    });
+  }
+
+  function renderQuotes(raw) {
+    var list = arr(raw).filter(function (x) { return x && str(x.quote); });
+    if (!list.length) { hideSection('quotes'); return; }
+    list.forEach(function (x) {
+      var bq = el('blockquote'); bq.appendChild(el('p', null, '“' + str(x.quote) + '”'));
+      if (str(x.name)) {
+        var c = el('cite', 'small'); c.appendChild(el('strong', null, str(x.name)));
+        if (str(x.role)) c.appendChild(document.createTextNode(', ' + str(x.role)));
+        bq.appendChild(c);
+      }
+      $('quotes-list').appendChild(bq);
+    });
+  }
+
+  function renderNews(raw) {
+    var list = arr(raw).filter(function (x) { return x && str(x.title); });
+    if (!list.length) { hideSection('news'); return; }
+    list.forEach(function (x) {
+      var li = el('li'), when = str(x.date);
+      var t = el('time', null, when);
+      if (/^\d{4}-\d{2}(-\d{2})?$/.test(when)) {
+        t.dateTime = when;
+        var dt = new Date(when.length === 7 ? when + '-01T00:00:00' : when + 'T00:00:00');
+        if (!isNaN(dt)) t.textContent = dt.toLocaleDateString('en-GB', when.length === 7 ? { month: 'short', year: 'numeric' } : { day: 'numeric', month: 'short', year: 'numeric' });
+      }
+      var body = el('div'), h = el('h3'), url = safeUrl(x.url);
+      if (url) {
+        var a = el('a', null, str(x.title)); a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.appendChild(el('span', 'sr-only', ' (opens in a new tab)')); h.appendChild(a);
+      } else h.textContent = str(x.title);
+      body.appendChild(h); if (str(x.summary)) body.appendChild(el('p', null, str(x.summary)));
+      li.appendChild(t); li.appendChild(body); $('news-list').appendChild(li);
+    });
+  }
+
+  // Static hosting has no mail backend, so the form prepares an email in the visitor's own app.
+  function bindForm(email) {
+    var form = $('form');
+    if (!email) { form.hidden = true; return; }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var n = $('f-name'), m = $('f-email'), g = $('f-msg'), note = $('form-note');
+      if (!n.value.trim() || !m.validity.valid || !m.value.trim() || !g.value.trim()) {
+        note.textContent = 'Fill in your name, a valid email and a message.';
+        (!n.value.trim() ? n : (!m.validity.valid || !m.value.trim()) ? m : g).focus();
+        return;
+      }
+      var body = g.value.trim() + '\n\n' + n.value.trim() + '\n' + m.value.trim();
+      location.href = 'mailto:' + encodeURIComponent(email).replace('%40', '@') +
+        '?subject=' + encodeURIComponent('Message from ' + n.value.trim()) + '&body=' + encodeURIComponent(body);
+      note.textContent = 'Your email app should open with the message ready. If it does not, write to ' + email + '.';
+    });
+  }
+
   function watchNav() {
     if (!('IntersectionObserver' in window)) return;
     var links = {};
@@ -220,11 +293,15 @@
       if (md && str(d.meta.description)) md.content = d.meta.description;
     }
     renderHero(d);
-    renderAbout(d.about);
+    renderAbout(d.about, d.avatar, str(d.name));
+    renderServices(d.services);
     renderSkills(d.skills);
     renderProjects(d.projects);
     renderExperience(d.experience);
+    renderQuotes(d.testimonials);
+    renderNews(d.news);
     renderContact(d);
+    bindForm(str(d.email));
     if ($('work').hidden) $('cta-work').hidden = true;
     $('copy').textContent = '© ' + new Date().getFullYear() + (str(d.name) ? ' ' + str(d.name) : '');
     watchNav();
