@@ -5,72 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sajan Bhandari — Programmer</title>
   <meta name="description" content="Portfolio of Sajan Bhandari, a programmer building things for the web.">
-  <meta name="theme-color" content="#14110f">
+  <meta name="theme-color" content="#2a4bd7">
   <link rel="icon" href="assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
-  <header class="nav" id="nav">
-    <a class="brand" href="#top" id="brand">SB</a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="emblem" viewBox="0 0 100 112">
+      <path d="M50 4 94 18v36c0 28-20 44-44 54C26 98 6 82 6 54V18Z" fill="#e0262d" stroke="#0f1530" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M50 14 84 25v29c0 21-15 35-34 43C31 89 16 75 16 54V25Z" fill="none" stroke="#fffef9" stroke-width="3"/>
+      <path d="M57 22 31 60h16l-6 28 28-40H54Z" fill="#ffd21f" stroke="#0f1530" stroke-width="5" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <header class="bar">
+    <a class="brand" href="#top" aria-label="Back to the top">
+      <svg class="mark" viewBox="0 0 100 112"><use href="#emblem"/></svg>
+      <span id="brand">SB</span>
+    </a>
     <nav aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
+      <a href="#about">Origin</a>
+      <a href="#powers">Powers</a>
+      <a href="#work">Missions</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="theme" id="theme" aria-label="Toggle colour theme" type="button"></button>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <p class="pill" id="availability"><span class="dot"></span><span></span></p>
-      <h1 id="name">&nbsp;</h1>
-      <p class="role" id="role"></p>
-      <p class="tagline" id="tagline"></p>
-      <div class="cta">
-        <a class="btn primary" href="#work">See my work</a>
-        <a class="btn" href="#contact">Get in touch</a>
+  <main>
+    <section class="cover" id="top">
+      <div class="cover-text">
+        <p class="issue">Issue #1</p>
+        <h1 id="name"></h1>
+        <p class="codename" id="role"></p>
+        <div class="bubble"><p id="tagline"></p></div>
+        <div class="cta">
+          <a class="btn hot" href="#work">Read the missions</a>
+          <a class="btn" href="#contact">Send the signal</a>
+        </div>
       </div>
-      <figure class="avatar" id="avatar" hidden></figure>
-    </section>
-
-    <section id="about" class="block reveal">
-      <h2 class="eyebrow">About</h2>
-      <div class="about">
-        <p class="lead" id="about-heading"></p>
-        <div id="about-body"></div>
+      <div class="cover-art" aria-hidden="false">
+        <div class="burst"></div>
+        <figure class="portrait" id="avatar" hidden></figure>
+        <svg class="hero-mark" id="hero-mark" viewBox="0 0 100 112" role="img" aria-label="Hero emblem"><use href="#emblem"/></svg>
+        <p class="price" id="availability" hidden></p>
       </div>
-      <div class="skills" id="skills"></div>
     </section>
 
-    <section id="work" class="block reveal">
-      <h2 class="eyebrow">Selected work</h2>
-      <div class="projects" id="projects"></div>
-    </section>
+    <div class="wrap">
+      <section id="about" class="sec">
+        <h2 class="banner">Origin story</h2>
+        <div class="origin">
+          <article class="panel main">
+            <p class="caption">It all began with a line of code…</p>
+            <p class="lead" id="about-heading"></p>
+            <div id="about-body"></div>
+          </article>
+          <aside class="panel place">
+            <p class="caption">Last seen</p>
+            <p class="where" id="location"></p>
+          </aside>
+        </div>
+      </section>
 
-    <section id="experience" class="block reveal">
-      <h2 class="eyebrow">Experience</h2>
-      <ol class="timeline" id="experience-list"></ol>
-    </section>
+      <section id="powers" class="sec">
+        <h2 class="banner">Powers</h2>
+        <div class="powers" id="skills"></div>
+      </section>
 
-    <section id="contact" class="block contact reveal">
-      <h2 class="eyebrow">Contact</h2>
-      <p class="lead">Have a project in mind? Let's talk.</p>
-      <a class="mail" id="mail" href="#"></a>
-      <ul class="socials" id="socials"></ul>
-    </section>
+      <section id="work" class="sec">
+        <h2 class="banner">Missions</h2>
+        <div class="missions" id="projects"></div>
+      </section>
+
+      <section id="experience" class="sec">
+        <h2 class="banner">Story so far</h2>
+        <ol class="chapters" id="experience-list"></ol>
+      </section>
+
+      <section id="contact" class="sec">
+        <div class="panel signal">
+          <div class="signal-text">
+            <h2 class="signal-title">Need a hero? Send up the signal.</h2>
+            <a class="mail" id="mail" href="#"></a>
+            <ul class="socials" id="socials"></ul>
+          </div>
+          <div class="beacon" aria-hidden="true"><svg viewBox="0 0 100 112"><use href="#emblem"/></svg></div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="foot">
+    <span class="tbc">To be continued…</span>
     <span id="copy"></span>
     <a href="admin/">Admin</a>
   </footer>
 
-  <noscript><p class="noscript">Please enable JavaScript to view this portfolio.</p></noscript>
+  <noscript><p class="noscript">Please enable JavaScript to read this comic.</p></noscript>
   <script src="js/main.js"></script>
 </body>
 </html>

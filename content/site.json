@@ -5,7 +5,7 @@
   },
   "name": "Sajan Bhandari",
   "role": "Programmer",
-  "tagline": "I build clean, fast and thoughtful software for the web.",
+  "tagline": "I build fast, dependable software for the web.",
   "availability": "Open to new projects",
   "location": "Nepal",
   "email": "hello@sajanbhandari.com.np",
@@ -15,10 +15,10 @@
     { "label": "Facebook", "url": "https://facebook.com/sajan.dwxs" }
   ],
   "about": {
-    "heading": "A programmer who cares about the details.",
+    "heading": "Every hero has an origin. Mine is a keyboard.",
     "paragraphs": [
       "I'm Sajan, a programmer based in Nepal. I enjoy turning ideas into working products, from the first line of code to the last pixel.",
-      "Edit this text from the admin panel at /admin to tell your own story."
+      "Placeholder text: replace this with your own story from the admin panel at /admin."
     ]
   },
   "skills": [
